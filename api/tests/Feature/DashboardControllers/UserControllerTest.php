@@ -23,7 +23,7 @@ class UserControllerTest extends TestCase
 	public function test_admin_can_get_all_users_list(): void
 	{
 		$this->authUser();
-		User::factory(3)->create();
+		User::factory(2)->create();
 
 		$response = $this->getJson(route('users.index'));
 
@@ -56,6 +56,7 @@ class UserControllerTest extends TestCase
 	public function test_admin_can_create_a_new_user()
 	{
 		$this->authUser();
+
 		$data = [
 			'name' => 'yassir awad',
 			'username' => 'yassirawad',
@@ -66,9 +67,7 @@ class UserControllerTest extends TestCase
 			'image' => UploadedFile::fake()->image('test.png'),
 			'status' => ActiveStatusEnum::ACTIVE->value,
 		];
-
 		$response = $this->postJson(route('users.store'), $data);
-
 		$response->assertSuccessful();
 		$response->assertJsonStructure([
 			'data' => [

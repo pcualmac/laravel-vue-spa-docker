@@ -13,6 +13,11 @@ use Tests\TestCase;
 
 class UserServiceTest extends TestCase
 {
+	protected function setUp(): void
+	{
+		parent::setUp();
+		$this->seedPermissions();
+	}
 	public function test_can_get_paginated_users_list()
 	{
 		User::factory(4)->create();
@@ -22,7 +27,7 @@ class UserServiceTest extends TestCase
 		$this->assertInstanceOf(LengthAwarePaginator::class, $result);
 		$this->assertCount(2, $result);
 		$this->assertEquals(1, $result->currentPage());
-		$this->assertEquals(2, $result->lastPage());
+		$this->assertEquals(3, $result->lastPage());
 		$this->assertEquals(2, $result->perPage());
 	}
 

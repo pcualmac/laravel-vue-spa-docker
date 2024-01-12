@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\UploadController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\RoleController;
+use App\Http\Controllers\Kanye\KanyeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +42,8 @@ Route::middleware('auth:sanctum')->group(function () {
 		Route::put('{role}', 'update')->name('update');
 		Route::delete('{role}', 'destroy')->name('delete');
 	});
+
+	Route::get('/kanyequotes', [KanyeController::class,'kanyequotes'])->name('api.kanyequotes');
+    Route::get('/kanyequotesclear', [KanyeController::class,'kanyeQuotesClear'])->name('api.kanyequotesclear');
 });
 

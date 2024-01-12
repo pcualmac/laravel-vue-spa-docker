@@ -26,7 +26,7 @@ abstract class TestCase extends BaseTestCase
 	protected function superUser()
 	{
 		$user = User::factory()->create();
-		$user->assignRole(Role::ROLE_SUPER_ADMIN);
+		$user->assignRole(\Spatie\Permission\Models\Role::findByName('SUPER_ADMIN'));
 		return $user;
 	}
 

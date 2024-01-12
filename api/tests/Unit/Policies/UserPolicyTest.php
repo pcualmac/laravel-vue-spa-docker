@@ -53,6 +53,7 @@ class UserPolicyTest extends TestCase
 		$policy = new UserPolicy();
 
 		$this->assertTrue($policy->viewAny($admin2));
+		$this->assertTrue($policy->viewAny($admin));
 		$this->assertTrue($policy->view($admin2, $admin));
 		$this->assertTrue($policy->create($admin2));
 		$this->assertFalse($policy->update($admin2, $admin));

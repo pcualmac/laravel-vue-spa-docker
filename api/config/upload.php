@@ -4,7 +4,7 @@ return [
 	'types' => [
 		'users' => [
 			'mimetypes' => 'image/jpeg,image/png',
-			'max_size' => '4096',
+			'max_size' => 512,
 			'folder' => 'users',
 		]
 	]
