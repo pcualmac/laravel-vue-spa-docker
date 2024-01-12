@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 # To ensure the current Docker container environment is passed into the cron sub-processes
