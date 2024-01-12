@@ -41,7 +41,8 @@ cp api/.env.dev.example api/.env.dev
 // then =>
 
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build
-
+docker exec -it spa-dev-api-1 composer install     
+docker exec -it spa-dev-api-1 php artisan test 
 // then =>
 
 // run the migrations
