@@ -63,11 +63,12 @@ RUN composer dump-autoload -o \
     && chmod -R 755 /var/www \
     && chmod -R 777 /var/www/storage
 
-COPY start.sh /usr/local/bin/start
-RUN chmod +x /usr/local/bin/start
+COPY start.sh /usr/local/bin/
+RUN sed -i.bak 's/\r$//g' /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 
-CMD ["/usr/local/bin/start"]
+CMD ["/usr/local/bin/start.sh"]
